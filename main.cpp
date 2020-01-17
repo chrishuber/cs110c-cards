@@ -1,9 +1,9 @@
 //
-//  main.cpp
-//  card_deck_hand
+//  CS110C - Group5
+//  Project1
 //
-//  Created by Chris on 1/15/20.
-//  Copyright © 2020 Green Drake. All rights reserved.
+//  main.cpp
+//  01/15/2020
 //
 
 #include <iostream>
