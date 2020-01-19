@@ -3,7 +3,7 @@
 //  Project1
 //
 //  card.h
-//  01/15/2020
+//  01/18/2020
 //
 
 #ifndef card_h
@@ -19,12 +19,11 @@ class Card {
     public:
         Card();
         Card(char suit, char value);
-        // ~Card();
         char getSuit() const;
         char getValue() const;
         void setSuit(const char inSuit);
         void setValue(const char inValue);
-        void displayCard();
+        void displayCard() const;
 };
 
 #endif /* card_h */

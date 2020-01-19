@@ -3,7 +3,164 @@
 //  Project1
 //
 //  deck.cpp
-//  01/15/2020
+//  01/18/2020
 //
 
+
 #include "deck.h"
+
+
+Deck::Deck(){
+
+}
+
+
+Deck::Deck(const Card cards_[], int deckSize_){
+	/* Custom constructor for the Deck object.
+	- Takes an array of Card objects and assigns it to 
+	the private Cards member array.
+	*/
+	srand(time(0));
+
+
+	this->cards = cards_;
+	this->deckSize = deckSize_;
+
+
+	this->drawOrder = new int[deckSize_];
+	this->initDrawOrder();
+	this->topOfDeck = 0;
+
+
+}
+
+
+Deck::~Deck(){
+	delete this->drawOrder;
+}
+
+
+Card Deck::dealCard(){
+	/* Deals a card from the top of the deck.
+	*/
+	Card returnThis = this->cards[this->drawOrder[topOfDeck]];
+	this->topOfDeck++;
+	return returnThis;	
+}
+
+
+void Deck::shuffleDeck(){
+	/* Public - shuffles the cards in the deck that haven't yet been dealt.
+	*/
+
+
+	// Determine the active deck - the cards that haven't yet been drawn.
+	int sizeActiveDeck = this->deckSize - this->topOfDeck;
+	int* activeDeck = new int[sizeActiveDeck];
+	for (int i = 0; i < sizeActiveDeck; i++){
+		activeDeck[i] = this->drawOrder[topOfDeck + i];
+	}
+
+	
+	// Allocate space to make a new active deck, then shuffle.
+	int* newActiveDeck = new int[sizeActiveDeck];	
+	this->shuffleDeck(newActiveDeck, activeDeck, sizeActiveDeck);
+
+
+	// Swap out the old active deck for the new one.
+	for (int i = 0; i < sizeActiveDeck; i++){
+		this->drawOrder[topOfDeck + i] = newActiveDeck[i];
+	}
+
+		
+	// Free memory when done.
+	delete[] activeDeck;
+	delete[] newActiveDeck;
+
+
+}
+
+
+void Deck::shuffleDeck(
+	int newActiveDeck_[], 
+	int remainingDeck_[], 
+	int lenRemainingDeck_){
+
+	/* Private - picks a random card, places it in newActiveDeck_, 
+	makes a new frequency table without the card we just picked, 
+	then recurses.
+
+	At each new recursion, newActiveDeck is one item bigger, 
+	remainingDeck_ is one item smaller, and lenRemainingDeck _is one less.
+
+	When lenRemainingDeck is 0, the newActiveDeck is done.
+	*/
+
+	if (lenRemainingDeck_ == 0){
+		return;
+	}
+
+
+	// Pick a random card
+	int randomCard = rand() % lenRemainingDeck_;
+
+
+	// Place it at the end of newActiveDeck
+	newActiveDeck_[lenRemainingDeck_ - 1] = remainingDeck_[randomCard];
+
+
+	/* Construct a new remaining deck from the old one minus the
+	random card.
+	*/
+	int* newRemainingDeck = new int[lenRemainingDeck_ - 1];
+	for (int i = 0; i < randomCard; i++){
+		newRemainingDeck[i] = remainingDeck_[i];
+	}
+	for (int i = randomCard + 1; i < lenRemainingDeck_; i++){
+		newRemainingDeck[i-1] = remainingDeck_[i];	
+	}
+
+
+	// Recurse
+	this->shuffleDeck(newActiveDeck_, 
+		newRemainingDeck, 
+		lenRemainingDeck_ - 1);
+
+	
+	// Free the memory after we're done.
+	delete[] newRemainingDeck;
+
+
+}
+
+
+void Deck::initDrawOrder(){
+	/* Private - initializes a draw order for the cards.
+	*/
+	for (int i = 0; i < this->deckSize; i++){
+		this->drawOrder[i] = i;		
+	}
+
+
+}
+
+
+void Deck::displayDeck(){
+	/* Debug function - displays entire deck in draw order.
+	*/
+	for (int i = 0; i < this->deckSize; i++){
+		this->cards[this->drawOrder[i]].displayCard();
+	}
+
+}
+
+
+void Deck::displayActiveDeck(){
+	/* Debug function - displays active deck in draw order.
+	*/
+	for (int i = this->topOfDeck; i < this->deckSize; i++){
+		this->cards[this->drawOrder[i]].displayCard();
+	}
+
+
+}
