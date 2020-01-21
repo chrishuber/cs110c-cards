@@ -1,6 +1,6 @@
 # cs110c-cards
 
-### 01/20/3030 - Chris - Summary of changes:
+### 01/20/2020 - Chris - Summary of changes:
 * Hand.h and Hand.cpp - authored files
 * card.cpp - added missing getSuit() and getValue() methods
 * main.cpp - updated to include demo code for Hand object
