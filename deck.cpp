@@ -66,19 +66,19 @@ void Deck::returnCard(const Card card_){
 
 	// All the inactive cards are grouped at the start of the draw order.
 	for (int i = 0; i < this->topOfDeck; i++){
-//		if (this->cards[this->drawOrder[i]] == card_){
-//			/* Match found.
-//			Only one match possible, given our assumptions.
-//			- Decrement the top of deck by 1
-//			- swap the draw order at i with the draw order at the top of deck
-//			*/
-//			this->topOfDeck--;
-//			int temp = this->drawOrder[this->topOfDeck];
-//			this->drawOrder[this->topOfDeck] = this->drawOrder[i];
-//			this->drawOrder[i] = temp;
-//
-//			break;
-//		}
+		if (this->cards[this->drawOrder[i]] == card_){
+			/* Match found.
+			Only one match possible, given our assumptions.
+			- Decrement the top of deck by 1
+			- swap the draw order at i with the draw order at the top of deck
+			*/
+			this->topOfDeck--;
+			int temp = this->drawOrder[this->topOfDeck];
+			this->drawOrder[this->topOfDeck] = this->drawOrder[i];
+			this->drawOrder[i] = temp;
+
+			break;
+		}
 	}
 
 }
