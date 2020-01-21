@@ -25,7 +25,6 @@ Deck::Deck(const Card cards_[], int deckSize_){
 
 	this->cards = cards_;
 	this->deckSize = deckSize_;
-	this->cardStatus = new int[deckSize_];
 
 	this->drawOrder = new int[deckSize_];
 	this->initCards();
@@ -44,7 +43,6 @@ Card Deck::dealCard(){
 	/* Deals a card from the top of the deck.
 	*/
 	Card returnThis = this->cards[this->drawOrder[topOfDeck]];
-	this->cardStatus[this->drawOrder[topOfDeck]] = 1;
 	this->topOfDeck++;
 	return returnThis;	
 }
@@ -177,7 +175,6 @@ void Deck::initCards(){
 	*/
 	for (int i = 0; i < this->deckSize; i++){
 		this->drawOrder[i] = i;		
-		this->cardStatus[i] = 0;
 	}
 
 

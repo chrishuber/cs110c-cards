@@ -34,7 +34,6 @@ class Deck {
 		void shuffleDeck(int[], int[], int);
 
 		const Card* cards;
-		int* cardStatus;
 		int topOfDeck;
 		int deckSize;
 		int* drawOrder;
