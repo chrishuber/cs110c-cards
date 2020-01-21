@@ -35,4 +35,19 @@ void Card::setValue(const char inValue){
 }
 
 
+bool Card::operator==(Card card_) const{
+	/* Comparison operator for Card object. Assumes there is no such thing as a
+	duplicate card in the same deck.
+	*/
+
+	if ((this->suit == card_.suit) && (this->value == card_.value)){
+		return true;
+	}
+
+
+	return false;
+
+
+}
+
 

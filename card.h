@@ -3,7 +3,7 @@
 //  Project1
 //
 //  card.h
-//  01/18/2020
+//  01/20/2020
 //
 
 #ifndef card_h
@@ -24,6 +24,8 @@ class Card {
         void setSuit(const char inSuit);
         void setValue(const char inValue);
         void displayCard() const;
+
+				bool operator==(Card card_) const;
 };
 
 #endif /* card_h */

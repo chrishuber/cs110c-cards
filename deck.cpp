@@ -3,7 +3,7 @@
 //  Project1
 //
 //  deck.cpp
-//  01/18/2020
+//  01/20/2020
 //
 
 
@@ -25,10 +25,10 @@ Deck::Deck(const Card cards_[], int deckSize_){
 
 	this->cards = cards_;
 	this->deckSize = deckSize_;
-
+	this->cardStatus = new int[deckSize_];
 
 	this->drawOrder = new int[deckSize_];
-	this->initDrawOrder();
+	this->initCards();
 	this->topOfDeck = 0;
 
 
@@ -44,8 +44,47 @@ Card Deck::dealCard(){
 	/* Deals a card from the top of the deck.
 	*/
 	Card returnThis = this->cards[this->drawOrder[topOfDeck]];
+	this->cardStatus[this->drawOrder[topOfDeck]] = 1;
 	this->topOfDeck++;
 	return returnThis;	
+}
+
+
+void Deck::returnCard(const Card card_){
+	/* Returns a previously drawn card to the deck.
+
+	- Note: no manipulation of the Card array takes place - 
+	the parameter card_ is only used to determine which int in the
+	cardStatus array to change.
+
+	- Assumes each card in the deck is unique.
+	- Assumes the card being returned was in the deck to begin with.
+	*/
+
+
+	// If no cards missing:
+	if (this->topOfDeck == 0){
+		// error stuff
+		return;
+	}
+
+	// All the inactive cards are grouped at the start of the draw order.
+	for (int i = 0; i < this->topOfDeck; i++){
+		if (this->cards[this->drawOrder[i]] == card_){
+			/* Match found.
+			Only one match possible, given our assumptions.
+			- Decrement the top of deck by 1
+			- swap the draw order at i with the draw order at the top of deck
+			*/
+			this->topOfDeck--;
+			int temp = this->drawOrder[this->topOfDeck];
+			this->drawOrder[this->topOfDeck] = this->drawOrder[i];
+			this->drawOrder[i] = temp;
+
+			break;
+		}
+	}
+
 }
 
 
@@ -134,11 +173,13 @@ void Deck::shuffleDeck(
 }
 
 
-void Deck::initDrawOrder(){
-	/* Private - initializes a draw order for the cards.
+void Deck::initCards(){
+	/* Private - initializes the int arrays that keep track of
+	the cards.
 	*/
 	for (int i = 0; i < this->deckSize; i++){
 		this->drawOrder[i] = i;		
+		this->cardStatus[i] = 0;
 	}
 
 

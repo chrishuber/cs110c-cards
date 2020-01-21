@@ -3,7 +3,7 @@
 //  Project1
 //
 //  main.cpp
-//  01/18/2020
+//  01/20/2020
 //
 
 #include <iostream>
@@ -61,7 +61,24 @@ int main(int argc, const char * argv[]) {
 		std::cout << "Remaining cards: " << std::endl;
 		testDeck.shuffleDeck();
 		testDeck.displayActiveDeck();
-		
+
+
+		std::cout << "Returning the card..." << std::endl;
+		testDeck.returnCard(tempCard);		
+		testDeck.displayActiveDeck();
+
+
+		std::cout << "Draw three and return in reverse order..." << std::endl;
+		Card fooCards[3];
+		for (int i = 0; i < 3; i++){
+			fooCards[i] = testDeck.dealCard();	
+		}
+		for (int i = 0; i < 3; i++){
+			testDeck.returnCard(fooCards[i]);
+		}
+		testDeck.displayActiveDeck();
+
+
 		delete[] cards;
 		// End deck test code
-}
+	}
