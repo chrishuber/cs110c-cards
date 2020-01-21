@@ -25,29 +25,24 @@ void Card::displayCard() const{
 }
 
 
+char Card::getSuit() const {
+    return suit;
+}
+
+
+char Card::getValue() const {
+    return value;
+}
+
+
 void Card::setSuit(const char inSuit){
-	this->suit = inSuit;	
+    suit = inSuit;
 }
 
 
 void Card::setValue(const char inValue){
-	this->value = inValue;
+    value = inValue;
 }
 
-
-bool Card::operator==(Card card_) const{
-	/* Comparison operator for Card object. Assumes there is no such thing as a
-	duplicate card in the same deck.
-	*/
-
-	if ((this->suit == card_.suit) && (this->value == card_.value)){
-		return true;
-	}
-
-
-	return false;
-
-
-}
 
 
