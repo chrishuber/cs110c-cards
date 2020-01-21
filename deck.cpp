@@ -54,9 +54,7 @@ void Deck::returnCard(const Card card_){
 	/* Returns a previously drawn card to the deck.
 
 	- Note: no manipulation of the Card array takes place - 
-	the parameter card_ is only used to determine which int in the
-	cardStatus array to change.
-
+	the parameter card_ is only used to compare with a card in the Card array.
 	- Assumes each card in the deck is unique.
 	- Assumes the card being returned was in the deck to begin with.
 	*/
