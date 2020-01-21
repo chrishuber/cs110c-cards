@@ -1,5 +1,10 @@
 # cs110c-cards
 
+### 01/20/3030 - Chris - Summary of changes:
+* Hand.h and Hand.cpp - authored files
+* card.cpp - added missing getSuit() and getValue() methods
+* main.cpp - updated to include demo code for Hand object
+
 ### 01/20/2020 - Daniel - Summary of changes:
 * Card.h and Card.cpp - added == operator overload to compare cards
 * deck.h and deck.cpp - can add back a card that has been dealt out
