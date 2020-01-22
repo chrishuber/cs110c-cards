@@ -41,18 +41,25 @@ Hand::Hand(string inOwner) {
  probably be expanded to allow playing of a selected card from the hand. Asserts that the hand
  has cards in it requiring that the game check that condition first or this will throw an error.
  */
-Card Hand::playCard() {
+Card Hand::playCard(int num)
+{
     assert(cards.size() >= 1);
     
     int handSize = cards.size();
-    Card playOne = cards[handSize - 1];
-    cards.pop_back();
+    Card playOne = cards[num];
+    handSize = handSize - 1;
+    /*
+     for (int i = (num + 1); i < handsize(); i++)
+     {
+     cards[i] = cards[i+1];
+     }
+     */
+    for (int i = num; i < handSize; i++)
+    {
+        cards[i] = cards[i+1];
+    }
     return playOne;
 }
-
-
-
-
 
 
 

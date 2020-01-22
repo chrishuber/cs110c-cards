@@ -19,7 +19,7 @@ private:
 
 public:
     Hand(std::string owner="Unknown");
-    Card playCard();
+    Card playCard(int num);
     void drawCard(const Card);
     void displayHand();
     void foldHand();
