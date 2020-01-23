@@ -1,5 +1,11 @@
 # cs110c-cards
 
+### 01/23/2020 - Chris - Summary of changes:
+* Game.h, Game.cpp, Player.h, Player.cpp files authored
+* Updated main temporarily so it still compliles
+* Made game object with the intent for it to be extensibe for Daniel's Hi/Lo game
+* Work in progress, please post feedback in the Canvas forum
+
 ### 01/20/2020 - Chris - Summary of changes:
 * Hand.h and Hand.cpp - authored files
 * card.cpp - added missing getSuit() and getValue() methods
