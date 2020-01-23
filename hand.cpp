@@ -21,19 +21,20 @@ using namespace std;
 
 
 
+/* Simple getter for number of cards in hand */
 
-/*
- Default constructor with 'Unknown' set as owner if no string is passed in on initialization
- */
-
-Hand::Hand(string inOwner) {
-    owner = inOwner;
+int Hand::getHandsize() {
+    return cards.size();
 }
 
 
 
 
+/* Simple getter for specific card at given vector index */
 
+Card Hand::getCard(int index) {
+    return cards[index];
+}
 
 
 /*
@@ -45,7 +46,7 @@ Card Hand::playCard(int num)
 {
     assert(cards.size() >= 1);
     
-    int handSize = cards.size();
+    int handSize = getHandsize();
     Card playOne = cards[num];
     handSize = handSize - 1;
     /*
@@ -81,36 +82,14 @@ void Hand::drawCard(const Card inCard) {
 
 
 /*
- Displays the owner name and a list of the cards in their hand. If there are no cards in the
- hand, it also displays that information.
- */
-void Hand::displayHand() {
-    int handSize = cards.size();
-    
-    cout << owner << "'s Hand: ";
-    
-    if (handSize == 0) {
-        cout << "no cards";
-    }
-    else {
-        for (int i = 0; i < handSize; i++) {
-            cout << cards[i].getSuit() << cards[i].getValue();
-            cout << " ";
-        }
-    }
-    cout << endl;
-}
-
-
-
-
-
-
-
-
-/*
  Clears the contents of the vector to avoid any memory issues.
  */
 void Hand::foldHand() {
     cards.clear();
 }
+
+
+
+
+
+

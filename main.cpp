@@ -10,6 +10,8 @@
 #include "card.h"
 #include "deck.h"
 #include "hand.h"
+#include "game.h"
+#include "player.h"
 
 using namespace std;
 
@@ -77,23 +79,49 @@ int main() {
     }
     testDeck.displayActiveDeck();
 
-    Hand hand1("Wanda");
-    Hand hand2("Gary");
-    Hand hand3;
+//    Hand hand1("Wanda");
+//    Hand hand2("Gary");
+//    Hand hand3;
+//
+//    Card card1 = testDeck.dealCard();
+//    hand1.drawCard(card1);
+//    Card card2 = testDeck.dealCard();
+//    hand2.drawCard(card2);
+//    Card card3 = testDeck.dealCard();
+//    hand1.drawCard(card3);
+//    Card card4 = testDeck.dealCard();
+//    hand2.drawCard(card4);
+//
+//    hand1.displayHand();
+//    hand2.displayHand();
+//    hand3.displayHand();
+    
+    Game splat("Splat");
+    Player player1("Wanda");
+    Player player2("Gary");
+    Player player3;
+    
+    player1.addChips(100);
+    player2.addChips(100);
+    player3.addChips(100);
+    
+    splat.addPlayer(player1);
+    splat.addPlayer(player2);
+    splat.addPlayer(player3);
 
-    Card card1 = testDeck.dealCard();
-    hand1.drawCard(card1);
-    Card card2 = testDeck.dealCard();
-    hand2.drawCard(card2);
-    Card card3 = testDeck.dealCard();
-    hand1.drawCard(card3);
-    Card card4 = testDeck.dealCard();
-    hand2.drawCard(card4);
-
-    hand1.displayHand();
-    hand2.displayHand();
-    hand3.displayHand();
-
+//    Card card1 = testDeck.dealCard();
+//    player1.playerHand.drawCard(card1);
+//    Card card2 = testDeck.dealCard();
+//    hand2.drawCard(card2);
+//    Card card3 = testDeck.dealCard();
+//    hand1.drawCard(card3);
+//    Card card4 = testDeck.dealCard();
+//    hand2.drawCard(card4);
+//
+//    hand1.displayHand();
+//    hand2.displayHand();
+//    hand3.displayHand();
+    
     delete[] cards;
     // End deck test code
 }

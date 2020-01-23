@@ -12,16 +12,18 @@
 #include <iostream>
 #include <vector>
 
+#include "card.h"
+#include "deck.h"
+
 class Hand {
 private:
-    std::string owner;
     std::vector<Card> cards;
 
 public:
-    Hand(std::string owner="Unknown");
+    Card getCard(int index);
     Card playCard(int num);
     void drawCard(const Card);
-    void displayHand();
+    int getHandsize();
     void foldHand();
 };
 
