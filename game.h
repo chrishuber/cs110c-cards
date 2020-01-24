@@ -9,8 +9,8 @@
 #ifndef game_h
 #define game_h
 
-#include "deck.h"
 #include "card.h"
+#include "deck.h"
 #include "player.h"
 
 #include <iostream>
@@ -23,22 +23,22 @@ class Game {
         Deck* gameDeck;
         int pot;
 
-				bool gameInProgress;
-				int currentPlayer;
+        bool gameInProgress;
+        int currentPlayer;
 
-				void initCards();
-				Card* cards;
-
-				void gameLoop();
+        void gameLoop();
     
     public:
         Game(std::string name="52 Card Pickup");
-				~Game();
-        int ante;
+        ~Game();
+        Deck* deck();
+        void initGame(std::string, int numCards);
+        std::string getName() const;
+        void setName(std::string const);
         int getPot() const;
         void setPot(const int);
         void addPlayer(Player);
-				void initGame();
+        void showPlayed();
 };
 
 #endif /* game_h */

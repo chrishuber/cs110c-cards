@@ -21,24 +21,23 @@ class Player {
     private:
         std::string name;
         Hand playerHand;
+        Hand playedCards;
         int chips;
         bool active;
     
     public:
         Player(std::string name="Unknown");
-        void ante(int);
+
         void addChips(int);
         int countChips();
     
-//        void drawCard();
-//        void makeBet(int bet);
-//        void raise(int raise);
-//        void call();
-//        void showHand();
-//        void fold();
+        void drawCard(Deck*);
+        void playCard(int cardIndex);
+    
+        void showHand();
+        void fold();
     
         std::string getName();
-
 };
 
 #endif /* player_h */

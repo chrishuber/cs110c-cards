@@ -25,6 +25,7 @@ class Card {
         void setValue(const char inValue);
         void displayCard() const;
 
+        Card operator=(const Card& right);
         bool operator==(Card card_) const;
 };
 

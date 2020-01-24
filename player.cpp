@@ -25,15 +25,6 @@ Player::Player(string inName){
 
 
 
-void Player::ante(int inAnte) {
-    chips = chips - inAnte;
-    // inGame.setPot(inGame.getPot() + inGame.ante);
-}
-
-
-
-
-
 void Player::addChips(int inChips) {
     chips = chips + inChips;
 }
@@ -59,62 +50,54 @@ string Player::getName() {
 
 
 
-//void Player::drawCard() {
-//    
-//}
-//
-//void Player::makeBet(Game inGame, int bet) {
-//    chips = chips - bet;
-//    inGame.setPot(inGame.getPot() + bet);
-//}
-//
-//
-//
-//
-//
-//
-//void Player::raise(Game inGame, int raise) {
-//    // chips = chips - bet;
-//    // inGame.setPot(inGame.getPot() + bet);
-//}
-//
-//
-//
-//
-//
-//
-//void Player::call(Game inGame) {
-//    // chips = chips - bet;
-//    // inGame.setPot(inGame.getPot() + bet);
-//}
-//
-//
-//
-//
-//
-//void Player::fold(Game inGame) {
-//    playerHand.foldHand();
-//}
-//
-//
-//
-//
-//void Player::showHand() {
-//    /*
-//     Displays the owner name and a list of the cards in their hand. If there are no cards in the
-//     hand, it also displays that information.
-//     */
-//    int handSize = playerHand.getHandsize();
-//        
-//    cout << name << "'s Hand: ";
-//        
-//    if (handSize == 0) {
-//        cout << "no cards";
-//    }
-//    else {
-//        for (int i = 0; i < handSize; i++) {
-//            cout << playerHand.getCard(i).getSuit() << playerHand.getCard(i).getValue() << " ";
-//        }
-//    }
-//    cout << endl;
-//}
+
+
+
+
+void Player::drawCard(Deck *gameDeck) {
+    const Card drawnCard = gameDeck->dealCard();
+    playerHand.drawCard(drawnCard);
+}
+
+
+
+
+
+
+void Player::playCard(int cardIndex) {
+    const Card inPlayCard = playerHand.getCard(cardIndex);
+    cout << name << " plays " << playerHand.getCard(cardIndex).getSuit() << playerHand.getCard(cardIndex).getValue() << endl;
+    playerHand.playCard(cardIndex);
+    playedCards.drawCard(inPlayCard);
+}
+
+
+
+
+void Player::fold() {
+    playerHand.foldHand();
+}
+
+
+
+
+void Player::showHand() {
+    /*
+     Displays the owner name and a list of the cards in their hand. If there are no cards in the
+     hand, it also displays that information.
+     */
+    int handSize = playerHand.getHandsize();
+        
+    cout << name << "'s Hand: ";
+        
+    if (handSize == 0) {
+        cout << "no cards";
+    }
+    else {
+        for (int i = 0; i < handSize; i++) {
+            cout << playerHand.getCard(i).getSuit() << playerHand.getCard(i).getValue() << " ";
+        }
+    }
+    cout << endl;
+}
+

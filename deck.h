@@ -12,32 +12,26 @@
 #include <iostream>
 #include <ctime>
 #include <cstdlib>
+
 #include "card.h"
 
 class Deck {
-
+    
+    private:
+        Card* cards;
+        Card* initCards(int);
+        Card* newCard;
+        int topOfDeck;
+        int deckSize;
+    
 	public:
 		Deck();
-		Deck(const Card[], int);
 		~Deck();
 		Card dealCard();
-		void returnCard(const Card);		
-		void shuffleDeck();
+        void returnCard(const Card);
 
-	// Debug functions
 		void displayDeck();
-		void displayActiveDeck();
-
-
-	private:
-		void initCards();
-		void shuffleDeck(int[], int[], int);
-
-		const Card* cards;
-		int topOfDeck;
-		int deckSize;
-		int* drawOrder;
-
+        void shuffleDeck();    
 };
 
 #endif /* deck_h */

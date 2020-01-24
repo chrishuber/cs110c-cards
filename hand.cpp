@@ -30,6 +30,9 @@ int Hand::getHandsize() {
 
 
 
+
+
+
 /* Simple getter for specific card at given vector index */
 
 Card Hand::getCard(int index) {
@@ -37,43 +40,44 @@ Card Hand::getCard(int index) {
 }
 
 
+
+
+
+
+
 /*
- Plays the last card in the vector stack, removing it from the hand and returning it. Should
- probably be expanded to allow playing of a selected card from the hand. Asserts that the hand
- has cards in it requiring that the game check that condition first or this will throw an error.
+ Plays the last card in the vector stack, removing it from the hand at the indicated
+ index and returning it. Also shifts all remaining cards in the index down one and throws
+ away the last element in the vector using pop_back().
  */
-Card Hand::playCard(int num)
+
+Card Hand::playCard(int handIndex)
 {
     assert(cards.size() >= 1);
     
     int handSize = getHandsize();
-    Card playOne = cards[num];
-    handSize = handSize - 1;
-    /*
-     for (int i = (num + 1); i < handsize(); i++)
-     {
-     cards[i] = cards[i+1];
-     }
-     */
-    for (int i = num; i < handSize; i++)
+    Card playOne = cards[handIndex];
+    for (int i = handIndex; i < handSize; i++)
     {
         cards[i] = cards[i+1];
     }
+    cards.pop_back();
     return playOne;
 }
 
 
 
 
+
+
+
 /*
-Adds a cards to the end of the hand with no defined bounds using a vector. Could be potentially
-further linked to Deck object to less passively accept cards as input.
-*/
+ Adds a cards to the end of the hand with no defined bounds using a vector. Could be potentially
+ further linked to Deck object to less passively accept cards as input.
+ */
 void Hand::drawCard(const Card inCard) {
     cards.push_back(inCard);
 }
-
-
 
 
 
