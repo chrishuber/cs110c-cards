@@ -66,7 +66,7 @@ void Player::drawCard(Deck *gameDeck) {
 
 void Player::playCard(int cardIndex) {
     const Card inPlayCard = playerHand.getCard(cardIndex);
-    cout << name << " plays " << playerHand.getCard(cardIndex).getSuit() << playerHand.getCard(cardIndex).getValue() << endl;
+    cout << name << " plays " << playerHand.getCard(cardIndex).getValue() << playerHand.getCard(cardIndex).getSuit() << endl;
     playerHand.playCard(cardIndex);
     playedCards.drawCard(inPlayCard);
 }
@@ -95,7 +95,7 @@ void Player::showHand() {
     }
     else {
         for (int i = 0; i < handSize; i++) {
-            cout << playerHand.getCard(i).getSuit() << playerHand.getCard(i).getValue() << " ";
+            cout << playerHand.getCard(i).getValue() << playerHand.getCard(i).getSuit() << " ";
         }
     }
     cout << endl;

@@ -33,7 +33,6 @@ class Player {
     
         void drawCard(Deck*);
         void playCard(int cardIndex);
-    
         void showHand();
         void fold();
     

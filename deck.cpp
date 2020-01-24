@@ -9,6 +9,8 @@
 
 #include "deck.h"
 
+#include <cassert>
+
 using namespace std;
 
 /*
@@ -28,11 +30,11 @@ Deck::~Deck(){
 
 
 /*
- Private - initializes the deck with card objects in an array
+ Initializes the deck with card objects in an array using constant array values. Could be further
+ abstracted to take arbirary init card arrays to assign so you could have Magic the Gathering or
+ Tarot cards.
 */
 Card* Deck::initCards(int numCards) {
-    // drawOrder = new int[numCards];
-    
     const char values[13] = {'2', '3', '4', '5', '6', '7', '8', '9', 'T', 'J', 'Q', 'K', 'A'};
     const char suits[4] = {'D', 'C', 'H', 'S'};
     deckSize = numCards;
@@ -44,14 +46,10 @@ Card* Deck::initCards(int numCards) {
     while (j < 4) {
         for (int i = 0; i < 13; i++) {
             Card* newCard = new Card(values[i], suits[j]);
-            // newCard->setValue();
-            // newCard->setSuit();
-            // cout << values[i] << suits[j%13] << " ";
-            // cout << newCard->getValue() << newCard->getSuit() << " ";
             newDeck[k] = *newCard;
             k++;
         }
-        j = j+1;
+        j++;
     }
     cout << endl << "-------- INIT COMPLETE --------" << endl;
     return newDeck;
@@ -59,18 +57,30 @@ Card* Deck::initCards(int numCards) {
 
 
 
-
+/*
+ Returns a card from the top of the deck. Reassigns remaining cards to a new array
+ and deletes the old one to prevent memory leak. Adjusts deck size and returns deck
+ with dealt card removed.
+*/
 Card Deck::dealCard() {
-	/* Deals a card from the top of the deck.
-	*/
-	Card returnThis = this->cards[this->topOfDeck];
-	this->topOfDeck++;
-    this->deckSize--;
-	return returnThis;	
+    assert(deckSize > 0);
+    
+    Card* newDeck = new Card[deckSize - 1];
+	Card dealtCard = cards[0];
+    
+    for (int i = 0; i < deckSize; i++) {
+        Card* newCard = new Card(cards[i+1].getValue(), cards[i+1].getSuit());
+        newDeck[i] = *newCard;
+    }
+    
+    delete[] cards;
+    cards = newDeck;
+    deckSize--;
+	return dealtCard;
 }
 
 
-void Deck::returnCard(const Card card_) {
+void Deck::returnCard(const Card inCard) {
 	/* Returns a previously drawn card to the deck.
 
 	- Note: no manipulation of the Card array takes place - 
@@ -80,23 +90,20 @@ void Deck::returnCard(const Card card_) {
 	*/
 
 
-	// If no cards missing:
-	if (this->topOfDeck == 0){
-		// error stuff
-		return;
-	}
+    assert(deckSize > 0);
+
 
 	// All the inactive cards are grouped at the start of the draw order.
-	for (int i = 0; i < this->topOfDeck; i++){
-		if (this->cards[i] == card_){
+	for (int i = 0; i < topOfDeck; i++){
+		if (cards[i] == inCard){
 			/* Match found.
 			Only one match possible, given our assumptions.
 			- Decrement the top of deck by 1
 			- swap the draw order at i with the draw order at the top of deck
 			*/
-			this->topOfDeck--;
-			int temp = this->topOfDeck;
-			this->topOfDeck = i;
+			topOfDeck--;
+			int temp = topOfDeck;
+			topOfDeck = i;
 			i = temp;
 
 			break;

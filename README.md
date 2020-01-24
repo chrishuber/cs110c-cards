@@ -1,5 +1,9 @@
 # cs110c-cards
 
+### 01/24/2020 - Chris
+* Cleanup of last code changes
+* Added more demo code to main showing how gameDeck retains memory of dealt cards and is shuffle-able using remaining cards in any remaining amount
+
 ### 01/24/2020 - Chris - Summary of changes:
 * Deck.cpp - reworked shuffle() into a single function using a nested loop and rand() to assign cards to a new dynamic Card array
 * Also created an init() function for deck that triggers off of newGame with an optional card number input

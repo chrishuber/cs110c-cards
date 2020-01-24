@@ -67,4 +67,7 @@ int main() {
     player3.showHand();
     player4.showHand();
     
+    theGame.deck()->displayDeck();
+    theGame.deck()->shuffleDeck();
+    theGame.deck()->displayDeck();
 }

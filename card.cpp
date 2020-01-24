@@ -24,7 +24,7 @@ void Card::displayCard() const {
 /* Displays the full name of the card.
 */
 
-    cout << value << suit << " ";
+    cout << suit << value << " ";
 	/* Can be rewritten using switch to optimize
 	*/
 //	if (this->value == '2') std::cout << "Two of ";
@@ -95,8 +95,8 @@ Card Card::operator=(const Card& right) {
 Comparison operator for Card object. Assumes there is no such thing as a
 duplicate card in the same deck.
 */
-bool Card::operator==(Card card_) const {
-    if ((this->suit == card_.suit) && (this->value == card_.value)){
+bool Card::operator==(Card inCard) const {
+    if ((suit == inCard.suit) && (value == inCard.value)){
         return true;
     }
     return false;
