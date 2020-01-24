@@ -1,7 +1,7 @@
 # cs110c-cards
 
 ### 01/24/2020 - Asher - Summary of changes:
-*Deck alternate branch created.
+* Deck alternate branch created.
 * deck.h, deck.cpp adjusted in alt branch to simpler logic and functionaity.
 * deck.h, deck.cpp missing methods and variables to interact with Daniels code.
 
