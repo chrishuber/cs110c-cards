@@ -1,5 +1,11 @@
 # cs110c-cards
 
+### 01/24/2020 - Chris - Summary of changes:
+* Deck.cpp - reworked shuffle() into a single function using a nested loop and rand() to assign cards to a new dynamic Card array
+* Also created an init() function for deck that triggers off of newGame with an optional card number input
+* Updated Player code to allow them to play cards with output which gets removed from their hand and placed into a seperate Deck property
+which Game should be able to analyze to determine win conditions
+
 ### 01/24/2020 - Daniel - Summary of changes:
 * Game.h, Game.cpp - Implemented standard 52 card deck.
 * Card.cpp - changed displayCard() to display the full name of the card rather than the contents.
