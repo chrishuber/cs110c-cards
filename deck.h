@@ -2,8 +2,8 @@
 //  CS110C - Group5
 //  Project1
 //
-//  deck.h
-//  01/20/2020
+//  deck.h Alternate
+//  01/24/2020
 //
 
 #ifndef deck_h
@@ -13,6 +13,7 @@
 #include <ctime>
 #include <cstdlib>
 #include "card.h"
+#include <vector>
 
 class Deck {
 
@@ -24,11 +25,12 @@ class Deck {
 
 	// Debug functions
 		void displayDeck();
+		void checkDuplicate();
 
 
 	private:
 		static const int NUM_CARDS = 52;
-		Card cards[NUM_CARDS];
+		vector<Card>cards;
 
 };
 
