@@ -19,6 +19,7 @@ class Deck {
 
 	public:
 		Deck();
+		//Deck(size);
 		Card dealCard();
 		void returnCard();
 		void shuffleDeck();
