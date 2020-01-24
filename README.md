@@ -4,6 +4,7 @@
 * Deck alternate branch created.
 * deck.h, deck.cpp adjusted in alt branch to simpler logic and functionaity.
 * deck.h, deck.cpp missing methods and variables to interact with Daniels code.
+* deck.h, deck.cpp updated to use Vectors.
 
 ### 01/24/2020 - Daniel - Summary of changes:
 * Game.h, Game.cpp - Implemented standard 52 card deck.
