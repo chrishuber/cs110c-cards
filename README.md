@@ -1,6 +1,7 @@
 # cs110c-cards
 
 ### 01/24/2020 - Chris
+* Updates dealCard() to reassign all remaining cards to a new array, return that, and delete the old one to avoid memory leak
 * Cleanup of last code changes
 * Added more demo code to main showing how gameDeck retains memory of dealt cards and is shuffle-able using remaining cards in any remaining amount
 
