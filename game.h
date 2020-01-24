@@ -20,16 +20,25 @@ class Game {
     private:
         std::string name;
         std::vector<Player> players;
-        Deck gameDeck;
+        Deck* gameDeck;
         int pot;
+
+				bool gameInProgress;
+				int currentPlayer;
+
+				void initCards();
+				Card* cards;
+
+				void gameLoop();
     
     public:
         Game(std::string name="52 Card Pickup");
-        int ante = 1;
+				~Game();
+        int ante;
         int getPot() const;
         void setPot(const int);
         void addPlayer(Player);
-        Deck initDeck();
+				void initGame();
 };
 
 #endif /* game_h */

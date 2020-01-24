@@ -23,50 +23,70 @@ Game::Game(string inName) {
 }
 
 
+Game::~Game(){
+	delete[] this->cards;
+	delete this->gameDeck;
+}
 
+void Game::initGame(){
+/* Sets the Game to it's initial state.
+*/
 
+	this->gameInProgress = true;
+	this->currentPlayer = 0;
+	this->ante = 1;
 
-Deck Game::initDeck() {
-    // gameDeck.init();
-    
-    int size = 10;
-    Card* cards = new Card[size];
+	this->cards = new Card[52];
+	this->initCards();
+	this->gameDeck = new Deck(this->cards, 52);
+	this->gameLoop();
 
-    cards[0].setSuit('D');
-    cards[0].setValue('0');
-    
-    cards[1].setSuit('D');
-    cards[1].setValue('1');
-
-    cards[2].setSuit('C');
-    cards[2].setValue('2');
-
-    cards[3].setSuit('C');
-    cards[3].setValue('3');
-
-    cards[4].setSuit('H');
-    cards[4].setValue('4');
-
-    cards[5].setSuit('H');
-    cards[5].setValue('5');
-
-    cards[6].setSuit('S');
-    cards[6].setValue('6');
-
-    cards[7].setSuit('S');
-    cards[7].setValue('7');
-
-    cards[8].setSuit('D');
-    cards[8].setValue('8');
-
-    cards[9].setSuit('C');
-    cards[9].setValue('9');
-
-    Deck testDeck(cards, size);
-    return testDeck;
 }
 
 
+void Game::initCards() {
+/* Initializes a standard deck of 52 playing cards.
+*/
+
+	for (int i = 0; i < 13; i++){
+		this->cards[i].setSuit('D');
+		this->cards[i+13].setSuit('H');
+		this->cards[i+26].setSuit('C');
+		this->cards[i+39].setSuit('S');
+	}
+
+	for (int i = 0; i < 52; i++){
+		if (i%13 == 0) this->cards[i].setValue('2');
+		if (i%13 == 1) this->cards[i].setValue('3');
+		if (i%13 == 2) this->cards[i].setValue('4');
+		if (i%13 == 3) this->cards[i].setValue('5');
+		if (i%13 == 4) this->cards[i].setValue('6');
+		if (i%13 == 5) this->cards[i].setValue('7');
+		if (i%13 == 6) this->cards[i].setValue('8');
+		if (i%13 == 7) this->cards[i].setValue('9');
+		if (i%13 == 8) this->cards[i].setValue('T');
+		if (i%13 == 9) this->cards[i].setValue('J');
+		if (i%13 == 10) this->cards[i].setValue('Q');
+		if (i%13 == 11) this->cards[i].setValue('K');
+		if (i%13 == 12) this->cards[i].setValue('A');
+	}
+		
+
+}
+
+
+void Game::gameLoop(){
+/* Main game logic.
+*/
+
+	this->gameDeck->shuffleDeck();
+	this->gameDeck->displayDeck();
+	
+	
+
+	
+
+}
 
 
 

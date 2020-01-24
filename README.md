@@ -1,5 +1,10 @@
 # cs110c-cards
 
+### 01/24/2020 - Daniel - Summary of changes:
+* Game.h, Game.cpp - Implemented standard 52 card deck.
+* Card.cpp - changed displayCard() to display the full name of the card rather than the contents.
+* main.cpp - all old test code moved to testmain.cpp
+
 ### 01/23/2020 - Chris - Summary of changes:
 * Game.h, Game.cpp, Player.h, Player.cpp files authored
 * Updated main temporarily so it still compliles
