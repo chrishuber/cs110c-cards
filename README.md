@@ -1,5 +1,10 @@
 # cs110c-cards
 
+### 01/24/2020 - Asher - Summary of changes:
+* Deck alternate branch created.
+* deck.h, deck.cpp adjusted in alt branch to simpler logic and functionaity.
+* deck.h, deck.cpp missing methods and variables to interact with Daniels code.
+
 ### 01/24/2020 - Daniel - Summary of changes:
 * Game.h, Game.cpp - Implemented standard 52 card deck.
 * Card.cpp - changed displayCard() to display the full name of the card rather than the contents.
