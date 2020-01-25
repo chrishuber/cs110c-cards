@@ -70,11 +70,45 @@ void Game::gameLoop(){
 
 
 
+
 void Game::addPlayer(Player *inPlayer) {
     players.push_back(inPlayer);
     cout << inPlayer->getName() + " has joined " << name << endl;
 }
 
+
+
+
+void Game::beginRound() {
+    gameInProgress = true;
+    cout << "Round " << gameRound << " has begun!" << endl;
+    gameRound++;
+    dealCards();
+    collectAnte();
+}
+
+
+
+
+
+void Game::collectAnte() {
+    cout << "Players anteing..." << endl;
+    for (int i = 0; i < players.size(); i++) {
+        players.at(i)->ante(ante);
+        pot += ante;
+    }
+    cout << "Current pot is " << pot << endl;
+}
+
+
+
+
+
+void Game::acceptBet(Player *inPlayer, int bet) {
+    inPlayer->makeBet(bet);
+    pot += bet;
+    cout << "The pot is now " << pot << endl;
+}
 
 
 

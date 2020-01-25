@@ -21,7 +21,6 @@ int main() {
 
     Game theGame;
     theGame.initGame("High Card", 52);
-    // theGame.deck().
     
     theGame.deck()->displayDeck();
     theGame.deck()->shuffleDeck();
@@ -29,8 +28,7 @@ int main() {
     
 	Player player1("Afsarah");
 	Player player2("Blodwyn");
-	// Player player3("Cadence");
-    Player player3;
+	Player player3("Cadence");
 	Player player4("Dulcinea");
 
 	theGame.addPlayer(&player1);
@@ -38,22 +36,12 @@ int main() {
 	theGame.addPlayer(&player3);
 	theGame.addPlayer(&player4);
     
-//    player1.addChips(100);
-//    player2.addChips(100);
-//    player3.addChips(100);
+    player1.addChips(100);
+    player2.addChips(100);
+    player3.addChips(100);
+    player4.addChips(100);
 
-//    player1.drawCard(theGame.deck());
-//    player1.drawCard(theGame.deck());
-//    player2.drawCard(theGame.deck());
-//    player2.drawCard(theGame.deck());
-//    player2.drawCard(theGame.deck());
-//    player3.drawCard(theGame.deck());
-//    player3.drawCard(theGame.deck());
-//    player4.drawCard(theGame.deck());
-//    player4.drawCard(theGame.deck());
-//    player4.drawCard(theGame.deck());
-
-    theGame.dealCards();
+    theGame.beginRound();
     
     player1.showHand();
     player2.showHand();
@@ -61,8 +49,10 @@ int main() {
     player4.showHand();
     
     player1.playCard(1);
+    theGame.acceptBet(&player1, 20);
     player2.playCard(2);
     player2.playCard(2);
+    theGame.acceptBet(&player2, 15);
     player4.playCard(0);
     player2.playCard(2);
     player1.drawCard(theGame.deck());

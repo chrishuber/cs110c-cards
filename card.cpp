@@ -15,15 +15,20 @@ Card::Card(){
 }
 
 
+
+
 Card::Card(char inSuit, char inValue) {
     suit = inSuit;
     value = inValue;
 }
 
-void Card::displayCard() const {
-/* Displays the full name of the card.
-*/
 
+
+/*
+ Displays the card details.
+*/
+void Card::displayCard() const {
+    
     cout << suit << value << " ";
 	/* Can be rewritten using switch to optimize
 	*/
@@ -78,6 +83,8 @@ void Card::setSuit(const char inSuit){
 void Card::setValue(const char inValue){
     value = inValue;
 }
+
+
 
 
 /*

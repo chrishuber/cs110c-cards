@@ -15,6 +15,7 @@ class Card {
     private:
         char suit;
         char value;
+        bool faceUp = false;
 
     public:
         Card();

@@ -23,6 +23,7 @@ class Player {
         Hand playerHand;
         Hand playedCards;
         int chips;
+        int currentBet;
         bool active;
     
     public:
@@ -30,7 +31,8 @@ class Player {
 
         void addChips(int);
         int countChips();
-    
+        void ante(int);
+        void makeBet(int);
         void drawCard(Deck*, bool output=true);
         void playCard(int cardIndex);
         void showHand();

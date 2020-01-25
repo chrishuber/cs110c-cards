@@ -21,8 +21,10 @@ class Game {
         std::string name;
         std::vector<Player*> players;
         Deck* gameDeck;
-        int pot;
         int numStartCards = 5;
+        int gameRound = 1;
+        int ante = 1;
+        int pot = 0;
         bool gameInProgress;
         int currentPlayer;
 
@@ -35,7 +37,10 @@ class Game {
         void initGame(std::string, int numCards);
         std::string getName() const;
         void setName(std::string const);
+        void beginRound();
         void dealCards();
+        void collectAnte();
+        void acceptBet(Player*, int);
         int getPot() const;
         void setPot(const int);
         void addPlayer(Player*);

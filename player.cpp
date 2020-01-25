@@ -78,6 +78,14 @@ void Player::playCard(int cardIndex) {
 
 
 
+void Player::makeBet(int bet) {
+    chips = chips - bet;
+    currentBet += bet;
+    cout << name << " bets " << bet << " chips" << endl;
+}
+
+
+
 
 void Player::fold() {
     playerHand.foldHand();
@@ -106,3 +114,8 @@ void Player::showHand() {
     cout << endl;
 }
 
+
+
+void Player::ante(int inAnte) {
+    chips = chips - inAnte;
+}
