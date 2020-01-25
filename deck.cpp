@@ -38,7 +38,6 @@ Card* Deck::initCards(int numCards) {
     const char values[13] = {'2', '3', '4', '5', '6', '7', '8', '9', 'T', 'J', 'Q', 'K', 'A'};
     const char suits[4] = {'D', 'C', 'H', 'S'};
     deckSize = numCards;
-    topOfDeck = 0;
     Card* newDeck = new Card[deckSize];
     
     int j = 0;
@@ -51,6 +50,9 @@ Card* Deck::initCards(int numCards) {
         }
         j++;
     }
+    
+    delete[] newCard;
+    
     cout << endl << "-------- INIT COMPLETE --------" << endl;
     return newDeck;
 }
@@ -74,42 +76,24 @@ Card Deck::dealCard() {
     }
     
     delete[] cards;
+    delete [] newCard;
     cards = newDeck;
     deckSize--;
 	return dealtCard;
 }
 
 
+/*
+ Puts a previously drawn card on the bottom of deck. Creates a new array, adds
+ the returned card to it, deletes the old array to avoid memory issues, and rassigns
+ the new array as the deck.
+*/
 void Deck::returnCard(const Card inCard) {
-	/* Returns a previously drawn card to the deck.
-
-	- Note: no manipulation of the Card array takes place - 
-	the parameter card_ is only used to compare with a card in the Card array.
-	- Assumes each card in the deck is unique.
-	- Assumes the card being returned was in the deck to begin with.
-	*/
-
-
-    assert(deckSize > 0);
-
-
-	// All the inactive cards are grouped at the start of the draw order.
-	for (int i = 0; i < topOfDeck; i++){
-		if (cards[i] == inCard){
-			/* Match found.
-			Only one match possible, given our assumptions.
-			- Decrement the top of deck by 1
-			- swap the draw order at i with the draw order at the top of deck
-			*/
-			topOfDeck--;
-			int temp = topOfDeck;
-			topOfDeck = i;
-			i = temp;
-
-			break;
-		}
-	}
-
+    Card* newDeck = new Card[deckSize + 1];
+    newDeck[deckSize + 1] = inCard;
+    
+    delete[] cards;
+    cards = newDeck;
 }
 
 
@@ -117,16 +101,13 @@ void Deck::returnCard(const Card inCard) {
 void Deck::shuffleDeck() {
     srand(time(0));
     
-    // cout << deckSize;
     int unassigned = deckSize;
     Card* shuffledDeck = new Card[unassigned];
     
     int i = 0;
     while (unassigned > 0) {
         int randIndex = rand() % unassigned;
-        // std::cout << "RANDINDEX:[" << randIndex << "]";
         shuffledDeck[i] = cards[randIndex];
-        // cout << cards[randIndex].getValue() << cards[randIndex].getSuit() << " ";
         for (int n = randIndex; n < unassigned; n++) {
             cards[n] = cards[n+1];
         }
@@ -141,10 +122,10 @@ void Deck::shuffleDeck() {
 
 
 
-
+/*
+ Displays all cards in the deck in upcoming order they will be drawn.
+*/
 void Deck::displayDeck(){
-	/* Debug function - displays entire deck in draw order.
-	*/
     cout << "-------- CURRENT DECK --------" << endl;
 	for (int i = 0; i < this->deckSize; i++) {
 		cards[i].displayCard();

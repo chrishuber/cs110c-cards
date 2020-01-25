@@ -33,26 +33,28 @@ int main() {
     Player player3;
 	Player player4("Dulcinea");
 
-	theGame.addPlayer(player1);
-	theGame.addPlayer(player2);
-	theGame.addPlayer(player3);
-	theGame.addPlayer(player4);
+	theGame.addPlayer(&player1);
+	theGame.addPlayer(&player2);
+	theGame.addPlayer(&player3);
+	theGame.addPlayer(&player4);
     
 //    player1.addChips(100);
 //    player2.addChips(100);
 //    player3.addChips(100);
 
-    player1.drawCard(theGame.deck());
-    player1.drawCard(theGame.deck());
-    player2.drawCard(theGame.deck());
-    player2.drawCard(theGame.deck());
-    player2.drawCard(theGame.deck());
-    player3.drawCard(theGame.deck());
-    player3.drawCard(theGame.deck());
-    player4.drawCard(theGame.deck());
-    player4.drawCard(theGame.deck());
-    player4.drawCard(theGame.deck());
+//    player1.drawCard(theGame.deck());
+//    player1.drawCard(theGame.deck());
+//    player2.drawCard(theGame.deck());
+//    player2.drawCard(theGame.deck());
+//    player2.drawCard(theGame.deck());
+//    player3.drawCard(theGame.deck());
+//    player3.drawCard(theGame.deck());
+//    player4.drawCard(theGame.deck());
+//    player4.drawCard(theGame.deck());
+//    player4.drawCard(theGame.deck());
 
+    theGame.dealCards();
+    
     player1.showHand();
     player2.showHand();
     player3.showHand();
@@ -60,7 +62,13 @@ int main() {
     
     player1.playCard(1);
     player2.playCard(2);
+    player2.playCard(2);
     player4.playCard(0);
+    player2.playCard(2);
+    player1.drawCard(theGame.deck());
+    player1.drawCard(theGame.deck());
+    player3.drawCard(theGame.deck());
+    player4.drawCard(theGame.deck());
     
     player1.showHand();
     player2.showHand();

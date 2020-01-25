@@ -31,7 +31,7 @@ class Player {
         void addChips(int);
         int countChips();
     
-        void drawCard(Deck*);
+        void drawCard(Deck*, bool output=true);
         void playCard(int cardIndex);
         void showHand();
         void fold();

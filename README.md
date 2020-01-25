@@ -1,5 +1,12 @@
 # cs110c-cards
 
+
+### 01/24/2020 - Chris
+* Updated Players vector in Game to hold pointers instead of objects so that the players can perform actions from within the game (such as draw cards from the game deck)
+* Added dealCards() method to game to deal parameterized number of cards to all joined players
+* Updated drawCard() method with a suppress output flag to allow console message suppression for dealCards() or other purposes
+* Added additional demo code to main showing Player, Deck, and Game functionality
+
 ### 01/24/2020 - Chris
 * Updates dealCard() to reassign all remaining cards to a new array, return that, and delete the old one to avoid memory leak
 * Cleanup of last code changes

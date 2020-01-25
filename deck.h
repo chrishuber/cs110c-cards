@@ -21,7 +21,6 @@ class Deck {
         Card* cards;
         Card* initCards(int);
         Card* newCard;
-        int topOfDeck;
         int deckSize;
     
 	public:

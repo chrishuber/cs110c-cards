@@ -70,12 +70,22 @@ void Game::gameLoop(){
 
 
 
-void Game::addPlayer(Player inPlayer) {
+void Game::addPlayer(Player *inPlayer) {
     players.push_back(inPlayer);
-    cout << inPlayer.getName() + " has joined " << name << endl;
+    cout << inPlayer->getName() + " has joined " << name << endl;
 }
 
 
+
+
+void Game::dealCards() {
+    cout << "Dealing cards..." << endl;
+    for (int i = 0; i < players.size(); i++) {
+        for (int j = 0; j < numStartCards; j++) {
+            players.at(i)->drawCard(gameDeck, false);
+        }
+    }
+}
 
 
 /*

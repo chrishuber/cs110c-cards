@@ -54,8 +54,11 @@ string Player::getName() {
 
 
 
-void Player::drawCard(Deck *gameDeck) {
+void Player::drawCard(Deck *gameDeck, bool output) {
     const Card drawnCard = gameDeck->dealCard();
+    if (output == true) {
+        cout << name << " draws a card" << endl;
+    }
     playerHand.drawCard(drawnCard);
 }
 
@@ -70,6 +73,8 @@ void Player::playCard(int cardIndex) {
     playerHand.playCard(cardIndex);
     playedCards.drawCard(inPlayCard);
 }
+
+
 
 
 

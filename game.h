@@ -19,10 +19,10 @@
 class Game {
     private:
         std::string name;
-        std::vector<Player> players;
+        std::vector<Player*> players;
         Deck* gameDeck;
         int pot;
-
+        int numStartCards = 5;
         bool gameInProgress;
         int currentPlayer;
 
@@ -35,9 +35,10 @@ class Game {
         void initGame(std::string, int numCards);
         std::string getName() const;
         void setName(std::string const);
+        void dealCards();
         int getPot() const;
         void setPot(const int);
-        void addPlayer(Player);
+        void addPlayer(Player*);
         void showPlayed();
 };
 
