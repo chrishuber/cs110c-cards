@@ -71,7 +71,7 @@ Card Deck::dealCard() {
 	Card dealtCard = cards[0];
     
     for (int i = 0; i < deckSize; i++) {
-        Card* newCard = new Card(cards[i+1].getValue(), cards[i+1].getSuit());
+        Card* newCard = new Card(cards[i+1].getSuit(), cards[i+1].getValue());
         newDeck[i] = *newCard;
     }
     
