@@ -1,5 +1,9 @@
 # cs110c-cards
 
+### 01/25/2020 - Chris
+* Updated .gitignore file to prevent Visual Studio project files from leaking into the repo
+* Fixed vector range bug in playCard() method in Hand object and reverted erroneous change to shuffleDeck() method 
+
 ### 01/25/2020 - Tat
 * Fix array out of bounds issue on deck.cpp.
 
