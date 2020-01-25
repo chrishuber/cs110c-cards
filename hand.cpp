@@ -57,7 +57,7 @@ Card Hand::playCard(int handIndex)
     
     int handSize = getHandsize();
     Card playOne = cards[handIndex];
-    for (int i = handIndex; i < handSize; i++)
+    for (int i = handIndex; i < handSize - 1; i++)
     {
         cards[i] = cards[i+1];
     }
