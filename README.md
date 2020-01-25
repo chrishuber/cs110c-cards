@@ -1,5 +1,7 @@
 # cs110c-cards
 
+### 01/25/2020 - Tat
+* Fix array out of bounds issue on deck.cpp.
 
 ### 01/24/2020 - Chris
 * Updated Players vector in Game to hold pointers instead of objects so that the players can perform actions from within the game (such as draw cards from the game deck)

@@ -108,7 +108,7 @@ void Deck::shuffleDeck() {
     while (unassigned > 0) {
         int randIndex = rand() % unassigned;
         shuffledDeck[i] = cards[randIndex];
-        for (int n = randIndex; n < unassigned; n++) {
+        for (int n = randIndex; n < unassigned-1; n++) {
             cards[n] = cards[n+1];
         }
         unassigned--;
