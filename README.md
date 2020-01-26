@@ -1,5 +1,8 @@
 # cs110c-cards
 
+### 01/26/2020 - Chris
+* Added sample output in a comment to end of main.cpp.
+
 ### 01/25/2020 - Tat
 * Wrongly mixing cards value and cards suit when calling dealCard() on deck.cpp. This
 caused suit and value reversed from the original deck.
